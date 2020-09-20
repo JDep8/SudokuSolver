@@ -13,8 +13,6 @@ public class Sudoku {
 	inputGrid();
 	solve();
 
-	// test();
-
     }
 
     public void inputGrid() {
@@ -40,19 +38,6 @@ public class Sudoku {
 	}
     }
 
-    public void test() {
-
-	boolean possible = checkPossible(0, 3, 1);
-
-	if (possible == true) {
-	    System.out.println("True");
-
-	} else {
-	    System.out.println("false");
-	}
-
-    }
-
     public void solve() {
 
 	for (int y = 0; y < 9; y++) {
@@ -66,7 +51,11 @@ public class Sudoku {
 			if (possible == true) {
 
 			    this.grid[y][x] = n;
+			    // Recursion: we will try and extend the solution we have
 			    solve();
+
+			    // Back Tracking: If it does not work, we will set the value to zero and try
+			    // again.
 			    this.grid[y][x] = 0;
 
 			}
@@ -126,8 +115,7 @@ public class Sudoku {
 	    }
 	    System.out.println();
 	}
-	System.out.println();
-	System.out.println();
+
     }
 
     public static void main(String[] args) {
